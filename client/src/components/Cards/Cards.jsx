@@ -30,23 +30,37 @@ const Cards = (props) => {
               separator=","
             />
           </Typography>
-          <Typography color="textSecondary">DATE</Typography>
+          <Typography color="textSecondary">{new Date(lastUpdate).toDateString()}</Typography>
           <Typography variant="body2">Number of active cases of COVID-19</Typography>
         </CardContent>
       </Grid>
       <Grid item component={Card}>
         <CardContent>
           <Typography color="textSecondary" gutterBottom>Recovered</Typography>
-          <Typography variant="h5" gutterBottom>RECOVERED DATA</Typography>
-          <Typography color="textSecondary">DATE</Typography>
+          <Typography variant="h5" gutterBottom>
+          <CountUp
+              start={0}
+              end={recovered.value}
+              duration={2.5}
+              separator=","
+            />
+          </Typography>
+          <Typography color="textSecondary">{new Date(lastUpdate).toDateString()}</Typography>
           <Typography variant="body2">Number of recoveries from COVID-19</Typography>
         </CardContent>
       </Grid>
       <Grid item component={Card}>
         <CardContent>
           <Typography color="textSecondary" gutterBottom>Deaths</Typography>
-          <Typography variant="h5" gutterBottom>DEAD DATA</Typography>
-          <Typography color="textSecondary">DATE</Typography>
+          <Typography variant="h5" gutterBottom>
+            <CountUp
+              start={0}
+              end={deaths.value}
+              duration={2.5}
+              separator=","
+            />
+          </Typography>
+          <Typography color="textSecondary">{new Date(lastUpdate).toDateString()}</Typography>
           <Typography variant="body2">Number of deaths due to COVID-19</Typography>
         </CardContent>
       </Grid>
