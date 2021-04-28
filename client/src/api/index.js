@@ -12,9 +12,9 @@ export const fetchGlobalData = async (country = 'Canada') => {
     const { data } = await axios.get(url)
 
     const modifiedData = {
-      TotalConfirmed: data.Global.TotalConfirmed,
-      TotalRecovered: data.Global.TotalRecovered,
-      TotalDeaths: data.Global.TotalDeaths,
+      Confirmed: data.Global.TotalConfirmed,
+      Recovered: data.Global.TotalRecovered,
+      Deaths: data.Global.TotalDeaths,
       CurrentDate: data.Global.Date,
     } 
 
@@ -27,16 +27,19 @@ export const fetchGlobalData = async (country = 'Canada') => {
 export const fetchData = async (country = 'Canada') => {
   let countryName = country.toLowerCase();
   
-  let changeableURL = `https://api.covid19api.com/live/country/${countryName}`;
+  let changeableURL = `https://api.covid19api.com/total/country/${countryName}`;
 
   try {
-    const { data } = await axios.get(url)
+    const { data } = await axios.get(changeableURL)
+
+    const mostRecent = data[data.length - 1]
 
     const modifiedData = {
-      TotalConfirmed: data.Global.TotalConfirmed,
-      TotalRecovered: data.Global.TotalRecovered,
-      TotalDeaths: data.Global.TotalDeaths,
-      CurrentDate: data.Global.Date,
+      CountryName: country,
+      Confirmed: mostRecent.Confirmed,
+      Recovered: mostRecent.Recovered,
+      Deaths: mostRecent.Deaths,
+      CurrentDate: mostRecent.Date,
     } 
 
     return modifiedData;
