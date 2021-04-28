@@ -2,7 +2,33 @@ import axios from 'axios'
 
 const url = 'https://api.covid19api.com/summary';
 
-export const fetchData = async () => {
+
+export const fetchGlobalData = async (country = 'Canada') => {
+  let countryName = country.toLowerCase();
+  
+  let changeableURL = `https://api.covid19api.com/live/country/${countryName}`;
+
+  try {
+    const { data } = await axios.get(url)
+
+    const modifiedData = {
+      TotalConfirmed: data.Global.TotalConfirmed,
+      TotalRecovered: data.Global.TotalRecovered,
+      TotalDeaths: data.Global.TotalDeaths,
+      CurrentDate: data.Global.Date,
+    } 
+
+    return modifiedData;
+  } catch (error) {
+    console.log("ERROR:", error)
+  }
+}
+
+export const fetchData = async (country = 'Canada') => {
+  let countryName = country.toLowerCase();
+  
+  let changeableURL = `https://api.covid19api.com/live/country/${countryName}`;
+
   try {
     const { data } = await axios.get(url)
 
