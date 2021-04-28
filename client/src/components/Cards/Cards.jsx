@@ -7,11 +7,11 @@ import cx from 'classnames';
 const Cards = (props) => {
 
   const {
-    CountryName,
     Confirmed,
     Recovered,
     Deaths,
     CurrentDate,
+    CountryName,
   } = props.data
 
   if(!Confirmed) {
