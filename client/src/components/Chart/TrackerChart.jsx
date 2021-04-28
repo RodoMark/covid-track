@@ -14,10 +14,9 @@ const TrackerChart = () => {
     fetchAPI()
   }, [])
   
-  
-  
-
   return (
+    <div id="chart">
+    <h3>COVID 19 CASES OVER TIME</h3>
     <ResponsiveContainer width="100%" aspect={3}>
       <LineChart
         width={500}
@@ -35,11 +34,12 @@ const TrackerChart = () => {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="Confirmed" stroke="#8884d8" activeDot={{ r: 8 }} />
-        <Line type="monotone" dataKey="Recovered" stroke="#82ca9d" />
-        <Line type="monotone" dataKey="Deaths" stroke="#82ca9d" />
+        <Line type="monotone" dataKey="Confirmed" fill="rgba(0,255,0, 0.5)" stroke="rgba(0,255,0, 0.5)"/>
+        <Line type="monotone" dataKey="Recovered" fill="rgba(0,0,255, 0.5)" stroke="rgba(0,0,255, 0.5)" />
+        <Line type="monotone" dataKey="Deaths" fill="rgba(110,0,0, 0.5)" stroke="rgba(110,0,0, 0.5)" />
       </LineChart>
     </ResponsiveContainer>
+    </div>
   );
 }
 
