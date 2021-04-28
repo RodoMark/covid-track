@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, { PureComponent } from 'react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { fetchDailyData } from '../../api';
-import { Line, Bar } from 'react-chartjs-2';
+
 
 import styles from './Chart.module.css';
 
@@ -54,7 +55,7 @@ const Chart = () => {
 
   return (
   <div className={styles.container}>
-    {lineChart}
+    <h1></h1>
   </div>
   )
 }

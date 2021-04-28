@@ -24,10 +24,10 @@ export const fetchDailyData = async () => {
      const { data } = await axios.get('https://api.covid19api.com/total/dayone/country/canada')
 
      const modifiedData = data.map((dailyData) => ({
-       confirmed: dailyData.Confirmed,
-       recovered: dailyData.Recovered,
-       deaths: dailyData.Deaths,
-       date: dailyData.Date,
+       Confirmed: dailyData.Confirmed,
+       Recovered: dailyData.Recovered,
+       Deaths: dailyData.Deaths,
+       Date: dailyData.Date,
      })
     )
 
