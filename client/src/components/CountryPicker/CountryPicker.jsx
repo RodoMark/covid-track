@@ -17,7 +17,9 @@ const CountryPicker = ({ handleCountryChange }) => {
     fetchCountries()
   }, [setAvailableCountries])
 
-  const parsedCountries = availableCountries.sort().map((country, index) => {
+  const parsedCountries = availableCountries
+    .sort()
+    .map((country, index) => {
     return(
       <option key={index} value={country}>{country}</option>
     ) 
@@ -26,6 +28,7 @@ const CountryPicker = ({ handleCountryChange }) => {
   return (
     <FormControl className={styles.formControl}>
       <NativeSelect defaultValue='' onChange={(e)=> handleCountryChange(e.target.value) }>
+        <option value="Global">Global</option>
         {availableCountries.length ? parsedCountries : <h3>Loading...</h3>}
       </NativeSelect>
     </FormControl>

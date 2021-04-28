@@ -2,11 +2,12 @@ import React from 'react'
 
 import { Cards, TrackerChart, CountryPicker } from './components'
 import styles from './App'
-import { fetchData } from './api'
+import { fetchData, fetchGlobalData } from './api'
 
 class App extends React.Component {
   state = {
     data: {},
+    countryName: 'the Whole World'
   }
 
   async componentDidMount() {
@@ -15,19 +16,23 @@ class App extends React.Component {
   }
 
   handleCountryChange = async (country) => {
-    const fetchedData = await fetchData(country)
-    this.setState({ data: fetchedData })
-    
+    if(country === "Global") {
+      const globalData = await fetchGlobalData()
+      this.setState({ data: globalData, countryName: country })
+    } else {
+      const fetchedData = await fetchData(country)
+      this.setState({ data: fetchedData, countryName: country })
+    }
   }
  
   render() {
-    const { data } = this.state; 
+    const { data, countryName } = this.state; 
 
     return (
       <div className={styles.container}>
-        <Cards data={data} />
+        <Cards data={data} countryName={countryName} />
         <CountryPicker handleCountryChange={this.handleCountryChange} />
-        <TrackerChart />
+        <TrackerChart countryName={countryName} />
       </div>
     
     );

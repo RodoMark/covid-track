@@ -5,14 +5,14 @@ import styles from './Cards.module.css';
 import cx from 'classnames';
 
 const Cards = (props) => {
-
   const {
     Confirmed,
     Recovered,
     Deaths,
     CurrentDate,
-    CountryName,
   } = props.data
+
+  const countryName = props.countryName
 
   if(!Confirmed) {
     return 'Loading...';
@@ -20,7 +20,7 @@ const Cards = (props) => {
 
   return (
   <div class={styles.container}>
-    <h1>{`Current Statistics for ${CountryName}`}</h1>
+    <h1>{`Current Statistics for ${countryName}`}</h1>
     <Grid container spacing={3} justify='center'>
       <Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.infected)}>
         <CardContent>

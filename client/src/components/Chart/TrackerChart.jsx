@@ -2,21 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { fetchDailyData } from '../../api';
 
-const TrackerChart = () => {
+const TrackerChart = (props) => {
   const [dailyData, setDailyData] = useState([])
+
+  const countryName = props.countryName
 
   useEffect(() => {
     const fetchAPI = async () => {
-      const data = await fetchDailyData()
+      const data = await fetchDailyData(countryName)
       setDailyData(data)
+      
     } 
 
     fetchAPI()
-  }, [])
+  }, [countryName])
   
   return (
     <div id="chart">
-    <h3>COVID 19 CASES OVER TIME</h3>
+    <h3>{`COVID 19 CASES OVER TIME FOR ${countryName}`.toUpperCase()}</h3>
     <ResponsiveContainer width="100%" aspect={3}>
       <LineChart
         width={500}
