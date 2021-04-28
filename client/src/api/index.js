@@ -36,3 +36,11 @@ export const fetchDailyData = async () => {
     console.log(error)
   } 
 }
+
+export const countries = async () => {
+  try {
+    const response = await axios.get(`https://api.covid19api.com/countries`)
+  } catch(error) {
+    console.log(error)
+  }
+}
