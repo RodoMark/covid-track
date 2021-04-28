@@ -7,27 +7,27 @@ import styles from './Chart.module.css';
 const Chart = () => {
   const [dailyData, setDailyData] = useState([])
 
-  useEffect(()=> {
-    const fetchAPI = async () => {
-      setDailyData(await fetchDailyData());
-    }
-
-    fetchAPI()
-  }, [])
+  // useEffect(()=> {
+  //   const fetchAPI = async () => {
+  //     setDailyData(await fetchDailyData());
+  //   }
+  //   fetchAPI()
+  //   console.log(dailyData)
+  // }, [])
 
   const lineChart = (
     dailyData.length ?
     <Line 
       data= {
         {
-          labels: dailyData(({ date }) => date),
+          labels: dailyData.map(({ date }) => date),
           datasets: [{
-            data: dailyData(( { confirmed }) => confirmed),
+            data: dailyData.map(( { confirmed }) => confirmed),
             label: 'Infected',
             borderColor: '#458B00',
             fill: true,
           }, {
-            data: dailyData(( { deaths }) => deaths),
+            data: dailyData.map(( { deaths }) => deaths),
             label: 'Infected',
             borderColor: '#C0C0C0',
             backgroundColor: 'rgba(255, 0, 0, 0.5)',
