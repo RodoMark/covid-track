@@ -5,20 +5,22 @@ import styles from './Cards.module.css';
 import cx from 'classnames';
 
 const Cards = (props) => {
-
   const {
-    TotalConfirmed,
-    TotalRecovered,
-    TotalDeaths,
+    Confirmed,
+    Recovered,
+    Deaths,
     CurrentDate,
   } = props.data
 
-  if(!TotalConfirmed) {
+  const countryName = props.countryName
+
+  if(!Confirmed) {
     return 'Loading...';
   } 
 
   return (
   <div class={styles.container}>
+    <h1>{`Current Statistics for ${countryName}`}</h1>
     <Grid container spacing={3} justify='center'>
       <Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.infected)}>
         <CardContent>
@@ -26,7 +28,7 @@ const Cards = (props) => {
           <Typography variant="h5" gutterBottom>
             <CountUp
               start={0}
-              end={TotalConfirmed}
+              end={Confirmed}
               duration={2.5}
               separator=","
             />
@@ -41,7 +43,7 @@ const Cards = (props) => {
           <Typography variant="h5" gutterBottom>
           <CountUp
               start={0}
-              end={TotalRecovered}
+              end={Recovered}
               duration={2.5}
               separator=","
             />
@@ -56,13 +58,13 @@ const Cards = (props) => {
           <Typography variant="h5" gutterBottom>
             <CountUp
               start={0}
-              end={TotalDeaths}
+              end={Deaths}
               duration={2.5}
               separator=","
             />
           </Typography>
           <Typography color="textSecondary">{new Date(CurrentDate).toDateString()}</Typography>
-          <Typography variant="body2">Number of TotalDeaths due to COVID-19</Typography>
+          <Typography variant="body2">Number of Deaths due to COVID-19</Typography>
         </CardContent>
       </Grid>
     </Grid>

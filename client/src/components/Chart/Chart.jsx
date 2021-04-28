@@ -5,7 +5,9 @@ import { fetchDailyData } from '../../api';
 
 import styles from './Chart.module.css';
 
-const Chart = () => {
+const Chart = ({ data }) => {
+  const { CountryName } = data
+
   const [dailyData, setDailyData] = useState(["DAILY DATA"])
 
   useEffect(() => {
@@ -31,7 +33,7 @@ const Chart = () => {
           datasets: [{
             data: dailyData.map(( { confirmed }) => confirmed),
             label: 'Infected',
-            borderColor: '#458B00',
+            borderColor: 'rgba(0,255,0, 0.5)',
             fill: true,
           }, {
             data: dailyData.map(( { recovered }) => recovered),
@@ -43,7 +45,7 @@ const Chart = () => {
             data: dailyData.map(( { deaths }) => deaths),
             label: 'Deaths',
             borderColor: '#C0C0C0',
-            backgroundColor: 'rgba(255, 0, 0, 0.5)',
+            backgroundColor: 'rgba(110,0,0, 0.5)',
             fill: true,
           }],
       }
