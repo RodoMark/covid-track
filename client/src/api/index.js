@@ -5,7 +5,6 @@ const url = 'https://api.covid19api.com/summary';
 export const fetchData = async () => {
   try {
     const { data } = await axios.get(url)
-    console.log("NEW API DATA:", data)
 
     const modifiedData = {
       TotalConfirmed: data.Global.TotalConfirmed,
@@ -14,7 +13,6 @@ export const fetchData = async () => {
       CurrentDate: data.Global.Date,
     } 
 
-    console.log(modifiedData)
     return modifiedData;
   } catch (error) {
     console.log("ERROR:", error)
@@ -23,14 +21,13 @@ export const fetchData = async () => {
 
 export const fetchDailyData = async () => {
   try {
-     const { data } = await axios.get('https://api.covid19api.com/')
+     const { data } = await axios.get('https://api.covid19api.com/total/dayone/country/canada')
 
-     console.log("DATA FROM NEW API", data)
-     debugger
      const modifiedData = data.map((dailyData) => ({
-       TotalConfirmed: dailyData.TotalConfirmed.total,
-       TotalDeaths: dailyData.TotalDeaths.total,
-       date: dailyData.reportDate,
+       confirmed: dailyData.Confirmed,
+       recovered: dailyData.Recovered,
+       deaths: dailyData.Deaths,
+       date: dailyData.Date,
      })
     )
 

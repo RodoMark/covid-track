@@ -5,15 +5,21 @@ import { Line, Bar } from 'react-chartjs-2';
 import styles from './Chart.module.css';
 
 const Chart = () => {
-  const [dailyData, setDailyData] = useState([])
+  const [dailyData, setDailyData] = useState(["DAILY DATA"])
 
-  // useEffect(()=> {
-  //   const fetchAPI = async () => {
-  //     setDailyData(await fetchDailyData());
-  //   }
-  //   fetchAPI()
-  //   console.log(dailyData)
-  // }, [])
+  useEffect(() => {
+    async function fetchAPI() {
+      try {
+        const response = await fetchDailyData();
+        console.log("RESPONE INSIDE EFFECT", response)
+        setDailyData(response);
+      } catch(error) {
+        console.log(error)
+      }
+    }
+
+    fetchAPI()
+  }, [])
 
   const lineChart = (
     dailyData.length ?
@@ -27,8 +33,14 @@ const Chart = () => {
             borderColor: '#458B00',
             fill: true,
           }, {
+            data: dailyData.map(( { recovered }) => recovered),
+            label: 'Recovered',
+            borderColor: 'rgba(0,0,255, 0.5)',
+            backgroundColor: 'rgba(0,0,255, 0.5)',
+            fill: true,
+          }, {
             data: dailyData.map(( { deaths }) => deaths),
-            label: 'Infected',
+            label: 'Deaths',
             borderColor: '#C0C0C0',
             backgroundColor: 'rgba(255, 0, 0, 0.5)',
             fill: true,
