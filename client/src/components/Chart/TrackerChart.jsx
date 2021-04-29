@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { fetchDailyData } from '../../api';
+import { fetchDailyData, fetchGlobalDailyData } from '../../api';
 
 const TrackerChart = (props) => {
   const [dailyData, setDailyData] = useState([])
@@ -9,17 +9,23 @@ const TrackerChart = (props) => {
 
   useEffect(() => {
     const fetchAPI = async () => {
-      const data = await fetchDailyData(countryName)
-      setDailyData(data)
-      
+      if(countryName === "Global") {
+        const data = await fetchGlobalDailyData()
+        console.log("GLOBAL SIDE", dailyData)
+        setDailyData(data)
+        console.log("dailyData", dailyData)
+      } else {
+        const data = await fetchDailyData(countryName)
+        setDailyData(data)
+      }
+         
     } 
-
     fetchAPI()
   }, [countryName])
   
   return (
     <div id="chart">
-    <h3>{`COVID 19 CASES OVER TIME FOR ${countryName}`.toUpperCase()}</h3>
+    <h3>{`COVID 19 CASES OVER TIME FOR ${countryName === 'Global' ? 'the Whole World' : countryName}`.toUpperCase()}</h3>
     <ResponsiveContainer width="100%" aspect={3}>
       <LineChart
         width={412}

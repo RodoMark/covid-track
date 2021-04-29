@@ -5,7 +5,7 @@ export const fetchGlobalData = async () => {
     const { data } = await axios.get('https://api.covid19api.com/summary')
 
     const modifiedData = {
-      CountryName: 'the Whole World',
+      CountryName: 'Global',
       Confirmed: data.Global.TotalConfirmed,
       Recovered: data.Global.TotalRecovered,
       Deaths: data.Global.TotalDeaths,
@@ -41,15 +41,23 @@ export const fetchData = async (country = 'Canada') => {
 
 export const fetchGlobalDailyData = async () => {
   try {
-     const { data } = await axios.get(`https://covid2019-api.herokuapp.com/v2/timeseries/global`)
+     const response = await axios.get(`https://covid2019-api.herokuapp.com/v2/timeseries/global`)
 
-     const modifiedData = data.map((date) => ({
-       Confirmed: date.Confirmed,
-       Recovered: date.Recovered,
-       Deaths: date.Deaths,
-       Date: Object.keys(date),
-     })
+     const { data } = response.data
+
+     const modifiedData = data.map((dataObj) => {
+      let currentDate = Object.keys(dataObj)
+
+      return {
+       Confirmed: dataObj[currentDate].confirmed,
+       Recovered: dataObj[currentDate].recovered,
+       Deaths: dataObj[currentDate].deaths,
+       Date: dataObj[currentDate],
+     }
+    }
     )
+
+    console.log("MODIFIED DATA", modifiedData)
 
     return modifiedData;
   } catch(error) {
