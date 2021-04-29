@@ -22,8 +22,8 @@ const TrackerChart = (props) => {
     <h3>{`COVID 19 CASES OVER TIME FOR ${countryName}`.toUpperCase()}</h3>
     <ResponsiveContainer width="100%" aspect={3}>
       <LineChart
-        width={500}
-        height={300}
+        width={412}
+        height={247}
         data={dailyData}
         margin={{
           top: 5,

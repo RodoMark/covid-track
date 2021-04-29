@@ -39,6 +39,24 @@ export const fetchData = async (country = 'Canada') => {
   }
 }
 
+export const fetchGlobalDailyData = async () => {
+  try {
+     const { data } = await axios.get(`https://covid2019-api.herokuapp.com/v2/timeseries/global`)
+
+     const modifiedData = data.map((date) => ({
+       Confirmed: date.Confirmed,
+       Recovered: date.Recovered,
+       Deaths: date.Deaths,
+       Date: Object.keys(date),
+     })
+    )
+
+    return modifiedData;
+  } catch(error) {
+    console.log(error)
+  } 
+}
+
 export const fetchDailyData = async (country = 'Canada') => {
   let countryName = country.toLowerCase();
 

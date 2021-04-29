@@ -31,8 +31,10 @@ class App extends React.Component {
     return (
       <div className={styles.container}>
         <Cards data={data} countryName={countryName} />
-        <CountryPicker handleCountryChange={this.handleCountryChange} />
-        <TrackerChart countryName={countryName} />
+        <section id="dashboard">
+          <CountryPicker handleCountryChange={this.handleCountryChange} />
+          <TrackerChart countryName={countryName} />
+        </section>
       </div>
     
     );
