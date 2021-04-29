@@ -5,12 +5,14 @@ import styles from './Cards.module.css';
 import cx from 'classnames';
 
 const Cards = (props) => {
+  const data = props.data || {}
+
   const {
     Confirmed,
     Recovered,
     Deaths,
     CurrentDate,
-  } = props.data
+  } = data
 
   const countryName = props.countryName
 
