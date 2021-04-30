@@ -37,8 +37,22 @@
 }
 
 #dashboard .list {
+  margin-right: 1em;
   max-height: 100%;
   overflow: auto;
+}
+
+@media only screen and (max-width: 667px) {
+  #dashboard {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 100vh;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
 }
 
 body {

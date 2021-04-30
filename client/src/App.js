@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Cards, TrackerChart, CountryPicker, Sidebar } from './components'
+import { Cards, TrackerChart, CountryPicker,} from './components'
 import './App.scss';
 import { fetchData, fetchGlobalData } from './api'
 
@@ -30,7 +30,6 @@ class App extends React.Component {
 
     return (
       <div className="container">
-        <Sidebar />
         <Cards data={data} countryName={countryName} />
         <section id="dashboard">
           <CountryPicker handleCountryChange={this.handleCountryChange} />

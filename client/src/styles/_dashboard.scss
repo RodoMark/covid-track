@@ -7,8 +7,16 @@
     background-color: $lightBlue;
   }
   & .list {
+    margin-right: 1em;
     max-height: 100%;
     overflow: auto;
   }
 }
 
+@media only screen and (max-width: $mobileWidth) {
+  #dashboard {
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+  }
+}

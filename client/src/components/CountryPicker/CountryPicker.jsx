@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { countries } from '../../api'
 
-import { NativeSelect, FormControl } from '@material-ui/core'
-
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -29,7 +27,7 @@ const CountryPicker = ({ handleCountryChange }) => {
         button 
         key={index} 
         value={country}
-        onChange={(e)=> handleCountryChange(e.target.value)}
+        onClick={() => handleCountryChange(country)}
       >
         <ListItemText primary={country} />
       </ListItem>
@@ -40,10 +38,10 @@ const CountryPicker = ({ handleCountryChange }) => {
     <section className="list">
       <List 
         component="nav" 
-        aria-label="main mailbox folders">
+        aria-label="available countries">
         <ListItem 
           button 
-          onChange={(e)=> handleCountryChange(e.target.value)}
+          onClick={() => handleCountryChange("Global")}
         >
           <ListItemText primary="Global" />
         </ListItem>

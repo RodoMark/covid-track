@@ -43,9 +43,9 @@ const TrackerChart = (props) => {
         <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
-        <Line type="monotone" dataKey="Confirmed" fill="rgba(0,255,0, 0.5)" stroke="rgba(0,255,0, 0.5)"/>
-        <Line type="monotone" dataKey="Recovered" fill="rgba(0,0,255, 0.5)" stroke="rgba(0,0,255, 0.5)" />
-        <Line type="monotone" dataKey="Deaths" fill="rgba(110,0,0, 0.5)" stroke="rgba(110,0,0, 0.5)" />
+        <Line type="monotone" dataKey="Confirmed" stroke="rgba(0,255,0, 0.5)"/>
+        <Line type="monotone" dataKey="Recovered" stroke="rgba(0,0,255, 0.5)" />
+        <Line type="monotone" dataKey="Deaths" stroke="rgba(110,0,0, 0.5)" />
       </LineChart>
     </ResponsiveContainer>
     <h3>{`COVID 19 CASES OVER TIME FOR ${countryName === 'Global' ? 'the Whole World' : countryName}`.toUpperCase()}</h3>
