@@ -1,9 +1,12 @@
+@import './variables';
+
 .container{
   margin: 50px 0;
 }
 
 .card {
   margin: 0 2% !important;
+  background: $lightBlue;
 }
 
 .card--infected {

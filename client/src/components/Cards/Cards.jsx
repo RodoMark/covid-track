@@ -20,7 +20,7 @@ const Cards = (props) => {
   } 
 
   return (
-  <div class="container">
+  <div class="container cards">
     <h1>{`Current Statistics for ${countryName === 'Global' ? 'the Whole World' : countryName}`}</h1>
     <Grid container spacing={3} justify='center'>
       <Grid item component={Card} xs={12} md={3} className="card card--infected">

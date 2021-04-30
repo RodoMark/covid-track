@@ -3,6 +3,12 @@ import { countries } from '../../api'
 
 import { NativeSelect, FormControl } from '@material-ui/core'
 
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+
+
+
 const CountryPicker = ({ handleCountryChange }) => {
   const [availableCountries, setAvailableCountries] = useState([])
 
@@ -19,17 +25,31 @@ const CountryPicker = ({ handleCountryChange }) => {
     .sort()
     .map((country, index) => {
     return(
-      <option key={index} value={country}>{country}</option>
+      <ListItem 
+        button 
+        key={index} 
+        value={country}
+        onChange={(e)=> handleCountryChange(e.target.value)}
+      >
+        <ListItemText primary={country} />
+      </ListItem>
     ) 
   })
 
   return (
-    <FormControl className="formControl">
-      <NativeSelect defaultValue='' onChange={(e)=> handleCountryChange(e.target.value) }>
-        <option value="Global">Global</option>
+    <section className="list">
+      <List 
+        component="nav" 
+        aria-label="main mailbox folders">
+        <ListItem 
+          button 
+          onChange={(e)=> handleCountryChange(e.target.value)}
+        >
+          <ListItemText primary="Global" />
+        </ListItem>
         {availableCountries.length ? parsedCountries : <h3>Loading...</h3>}
-      </NativeSelect>
-    </FormControl>
+      </List>
+    </section>
   )
 }
 

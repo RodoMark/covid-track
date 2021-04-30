@@ -1,0 +1,14 @@
+@import './variables';
+
+#dashboard {
+  display: flex;
+  height: 30vh;
+  & div.MuiFormControl-root.formControl {
+    background-color: $lightBlue;
+  }
+  & .list {
+    max-height: 100%;
+    overflow: auto;
+  }
+}
+

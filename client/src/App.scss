@@ -1,16 +1,18 @@
 @import './styles/cards';
 @import './styles/countryPicker';
 @import './styles/chart';
-@import './styles/sidebar';
+@import './styles/dashboard';
 
 body {
   margin: 0;
   padding: 0;
-  background-color: rgb(250,250,250);
+  background-color: $mainBlue;
+  color: cornsilk;
 }
 
 .container{
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
