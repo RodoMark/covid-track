@@ -1,19 +1,22 @@
+@import './variables';
+
 .container{
   margin: 50px 0;
 }
 
 .card {
   margin: 0 2% !important;
+  background: $lightBlue;
 }
 
-.infected {
+.card--infected {
   border-bottom: 10px solid rgba(0,255,0, 0.5)
 }
 
-.recovered {
+.card--recovered {
   border-bottom: 10px solid rgba(0,0,255, 0.5)
 }
 
-.deaths {
+.card--deaths {
   border-bottom: 10px solid rgba(110,0,0, 0.5)
 }

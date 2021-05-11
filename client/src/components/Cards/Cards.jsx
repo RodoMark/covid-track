@@ -1,16 +1,17 @@
 import React from 'react'
 import CountUp from 'react-countup'
 import { Card, CardContent, Typography, Grid } from '@material-ui/core'
-import styles from './Cards.module.css';
 import cx from 'classnames';
 
 const Cards = (props) => {
+  const data = props.data || {}
+
   const {
     Confirmed,
     Recovered,
     Deaths,
     CurrentDate,
-  } = props.data
+  } = data
 
   const countryName = props.countryName
 
@@ -19,10 +20,10 @@ const Cards = (props) => {
   } 
 
   return (
-  <div class={styles.container}>
-    <h1>{`Current Statistics for ${countryName}`}</h1>
+  <div class="container cards">
+    <h1>{`Current Statistics for ${countryName === 'Global' ? 'the Whole World' : countryName}`}</h1>
     <Grid container spacing={3} justify='center'>
-      <Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.infected)}>
+      <Grid item component={Card} xs={12} md={3} className="card card--infected">
         <CardContent>
           <Typography color="textSecondary" gutterBottom>Infected</Typography>
           <Typography variant="h5" gutterBottom>
@@ -37,7 +38,7 @@ const Cards = (props) => {
           <Typography variant="body2">Number of active cases of COVID-19</Typography>
         </CardContent>
       </Grid>
-      <Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.recovered)}>
+      <Grid item component={Card} xs={12} md={3} className="card card--recovered">
         <CardContent>
           <Typography color="textSecondary" gutterBottom>Recovered</Typography>
           <Typography variant="h5" gutterBottom>
@@ -52,7 +53,7 @@ const Cards = (props) => {
           <Typography variant="body2">Number of recoveries from COVID-19</Typography>
         </CardContent>
       </Grid>
-      <Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.deaths)}>
+      <Grid item component={Card} xs={12} md={3} className="card card--deaths">
         <CardContent>
           <Typography color="textSecondary" gutterBottom>Deaths</Typography>
           <Typography variant="h5" gutterBottom>

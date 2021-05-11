@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { countries } from '../../api'
 
-import { NativeSelect, FormControl } from '@material-ui/core'
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
-import styles from './CountryPicker.module.css'
+
 
 const CountryPicker = ({ handleCountryChange }) => {
   const [availableCountries, setAvailableCountries] = useState([])
@@ -21,17 +23,31 @@ const CountryPicker = ({ handleCountryChange }) => {
     .sort()
     .map((country, index) => {
     return(
-      <option key={index} value={country}>{country}</option>
+      <ListItem 
+        button 
+        key={index} 
+        value={country}
+        onClick={() => handleCountryChange(country)}
+      >
+        <ListItemText primary={country} />
+      </ListItem>
     ) 
   })
 
   return (
-    <FormControl className={styles.formControl}>
-      <NativeSelect defaultValue='' onChange={(e)=> handleCountryChange(e.target.value) }>
-        <option value="Global">Global</option>
+    <section className="list">
+      <List 
+        component="nav" 
+        aria-label="available countries">
+        <ListItem 
+          button 
+          onClick={() => handleCountryChange("Global")}
+        >
+          <ListItemText primary="Global" />
+        </ListItem>
         {availableCountries.length ? parsedCountries : <h3>Loading...</h3>}
-      </NativeSelect>
-    </FormControl>
+      </List>
+    </section>
   )
 }
 

@@ -1,0 +1,80 @@
+.container {
+  margin: 50px 0;
+}
+
+.card {
+  margin: 0 2% !important;
+  background: #028cc9;
+}
+
+.card--infected {
+  border-bottom: 10px solid rgba(0, 255, 0, 0.5);
+}
+
+.card--recovered {
+  border-bottom: 10px solid rgba(0, 0, 255, 0.5);
+}
+
+.card--deaths {
+  border-bottom: 10px solid rgba(110, 0, 0, 0.5);
+}
+
+#chart {
+  padding: 1rem;
+  background-color: #028cc9;
+  border-radius: 5px;
+}
+
+#dashboard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 30vh;
+}
+
+#dashboard div.MuiFormControl-root.formControl {
+  background-color: #028cc9;
+}
+
+#dashboard .list {
+  margin-right: 1em;
+  max-height: 100%;
+  overflow: auto;
+}
+
+@media only screen and (max-width: 667px) {
+  #dashboard {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 100vh;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #03417b;
+  color: cornsilk;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+/*# sourceMappingURL=App.css.map */
