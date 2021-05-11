@@ -1,27 +1,11 @@
-<<<<<<< HEAD
-=======
 @import './variables';
 
->>>>>>> 2a879a2b8349aaa1871dc7b04affd657b3fe3b34
 .container{
   margin: 50px 0;
 }
 
 .card {
   margin: 0 2% !important;
-<<<<<<< HEAD
-}
-
-.infected {
-  border-bottom: 10px solid rgba(0,255,0, 0.5)
-}
-
-.recovered {
-  border-bottom: 10px solid rgba(0,0,255, 0.5)
-}
-
-.deaths {
-=======
   background: $lightBlue;
 }
 
@@ -34,6 +18,5 @@
 }
 
 .card--deaths {
->>>>>>> 2a879a2b8349aaa1871dc7b04affd657b3fe3b34
   border-bottom: 10px solid rgba(110,0,0, 0.5)
 }

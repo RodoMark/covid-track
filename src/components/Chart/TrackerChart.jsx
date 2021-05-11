@@ -9,34 +9,29 @@ const TrackerChart = (props) => {
 
   useEffect(() => {
     const fetchAPI = async () => {
-<<<<<<< HEAD:src/components/Chart/TrackerChart.jsx
-<<<<<<< HEAD:client/src/components/Chart/TrackerChart.jsx
       const data = await fetchDailyData(countryName)
       setDailyData(data)
       
-=======
+
       if(countryName === "Global") {
         const data = await fetchGlobalDailyData()
         setDailyData(data)
-=======
+
       if(countryName === "Global") {
         const data = await fetchGlobalDailyData()
         console.log("GLOBAL SIDE", dailyData)
         setDailyData(data)
         console.log("dailyData", dailyData)
->>>>>>> 2a879a2b8349aaa1871dc7b04affd657b3fe3b34:client/src/components/Chart/TrackerChart.jsx
+
       } else {
         const data = await fetchDailyData(countryName)
         setDailyData(data)
       }
-         
-<<<<<<< HEAD:src/components/Chart/TrackerChart.jsx
->>>>>>> e251acf... move everything out of client:src/components/Chart/TrackerChart.jsx
-=======
->>>>>>> 2a879a2b8349aaa1871dc7b04affd657b3fe3b34:client/src/components/Chart/TrackerChart.jsx
+    }
     } 
     fetchAPI()
-  }, [countryName])
+  }, [countryName]
+  )
   
   return (
     <div id="chart">
@@ -67,5 +62,4 @@ const TrackerChart = (props) => {
     </div>
   );
 }
-
 export default TrackerChart
