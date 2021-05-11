@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { Cards, TrackerChart, CountryPicker } from './components'
-import styles from './App'
+import { Cards, TrackerChart, CountryPicker,} from './components'
+import './App.scss';
 import { fetchData, fetchGlobalData } from './api'
 
 class App extends React.Component {
   state = {
     data: {},
-    countryName: 'the Whole World'
+    countryName: 'Global'
   }
 
   async componentDidMount() {
@@ -29,10 +29,12 @@ class App extends React.Component {
     const { data, countryName } = this.state; 
 
     return (
-      <div className={styles.container}>
+      <div className="container">
         <Cards data={data} countryName={countryName} />
-        <CountryPicker handleCountryChange={this.handleCountryChange} />
-        <TrackerChart countryName={countryName} />
+        <section id="dashboard">
+          <CountryPicker handleCountryChange={this.handleCountryChange} />
+          <TrackerChart countryName={countryName} />
+        </section>
       </div>
     
     );

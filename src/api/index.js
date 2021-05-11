@@ -7,7 +7,7 @@ export const fetchGlobalData = async () => {
     const { data } = await axios.get('https://api.covid19api.com/summary')
 
     const modifiedData = {
-      CountryName: 'the Whole World',
+      CountryName: 'Global',
       Confirmed: data.Global.TotalConfirmed,
       Recovered: data.Global.TotalRecovered,
       Deaths: data.Global.TotalDeaths,
@@ -41,8 +41,11 @@ export const fetchData = async (country = 'Canada') => {
   }
 }
 
+<<<<<<< HEAD:src/api/index.js
 <<<<<<< HEAD:client/src/api/index.js
 =======
+=======
+>>>>>>> 2a879a2b8349aaa1871dc7b04affd657b3fe3b34:client/src/api/index.js
 export const fetchGlobalDailyData = async () => {
   try {
      const response = await axios.get(`https://covid2019-api.herokuapp.com/v2/timeseries/global`)
@@ -61,13 +64,21 @@ export const fetchGlobalDailyData = async () => {
     }
     )
 
+<<<<<<< HEAD:src/api/index.js
+=======
+    console.log("MODIFIED DATA", modifiedData)
+
+>>>>>>> 2a879a2b8349aaa1871dc7b04affd657b3fe3b34:client/src/api/index.js
     return modifiedData;
   } catch(error) {
     console.log(error)
   } 
 }
 
+<<<<<<< HEAD:src/api/index.js
 >>>>>>> e251acf... move everything out of client:src/api/index.js
+=======
+>>>>>>> 2a879a2b8349aaa1871dc7b04affd657b3fe3b34:client/src/api/index.js
 export const fetchDailyData = async (country = 'Canada') => {
   let countryName = country.toLowerCase();
 
