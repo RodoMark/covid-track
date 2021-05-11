@@ -9,9 +9,20 @@ const TrackerChart = (props) => {
 
   useEffect(() => {
     const fetchAPI = async () => {
+<<<<<<< HEAD:client/src/components/Chart/TrackerChart.jsx
       const data = await fetchDailyData(countryName)
       setDailyData(data)
       
+=======
+      if(countryName === "Global") {
+        const data = await fetchGlobalDailyData()
+        setDailyData(data)
+      } else {
+        const data = await fetchDailyData(countryName)
+        setDailyData(data)
+      }
+         
+>>>>>>> e251acf... move everything out of client:src/components/Chart/TrackerChart.jsx
     } 
 
     fetchAPI()

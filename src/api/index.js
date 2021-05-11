@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+import { allCountries } from './countries'
+
 export const fetchGlobalData = async () => {
   try {
     const { data } = await axios.get('https://api.covid19api.com/summary')
@@ -14,7 +16,7 @@ export const fetchGlobalData = async () => {
 
     return modifiedData;
   } catch (error) {
-    console.log("ERROR:", error)
+    console.log(error)
   }
 }
 
@@ -35,10 +37,37 @@ export const fetchData = async (country = 'Canada') => {
 
     return modifiedData;
   } catch (error) {
-    console.log("ERROR:", error)
+    console.log(error)
   }
 }
 
+<<<<<<< HEAD:client/src/api/index.js
+=======
+export const fetchGlobalDailyData = async () => {
+  try {
+     const response = await axios.get(`https://covid2019-api.herokuapp.com/v2/timeseries/global`)
+
+     const { data } = response.data
+
+     const modifiedData = data.map((dataObj) => {
+      let currentDate = Object.keys(dataObj)
+
+      return {
+       Confirmed: dataObj[currentDate].confirmed,
+       Recovered: dataObj[currentDate].recovered,
+       Deaths: dataObj[currentDate].deaths,
+       Date: dataObj[currentDate],
+     }
+    }
+    )
+
+    return modifiedData;
+  } catch(error) {
+    console.log(error)
+  } 
+}
+
+>>>>>>> e251acf... move everything out of client:src/api/index.js
 export const fetchDailyData = async (country = 'Canada') => {
   let countryName = country.toLowerCase();
 
@@ -61,9 +90,8 @@ export const fetchDailyData = async (country = 'Canada') => {
 
 export const countries = async () => {
   try {
-    const { data } = await axios.get(`https://api.covid19api.com/countries`)
 
-    const countries = data.map(countryObj => countryObj.Country)
+    const countries = allCountries.map(countryObj => countryObj.name)
     return countries
 
   } catch(error) {

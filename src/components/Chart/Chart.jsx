@@ -14,7 +14,6 @@ const Chart = ({ data }) => {
     async function fetchAPI() {
       try {
         const response = await fetchDailyData();
-        console.log("RESPONE INSIDE EFFECT", response)
         setDailyData(response);
       } catch(error) {
         console.log(error)
